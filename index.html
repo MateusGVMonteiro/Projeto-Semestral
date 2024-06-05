@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=1280" />
+  <title>Super Carioca World</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" href="css/musica.css">
+</head>
+
+<body>
+
+  <!-- jogo principal -->
+  <div class="main-wrapper">
+    <canvas class="game-screen"></canvas>
+  </div>
+
+  
+
+  <script src="js/View.js"></script>
+  <script src="js/GameUI.js"></script>
+
+  
+  <script src="js/mainGame/sons.js"></script>
+  <script src="js/mainGame/Element.js"></script>
+  <script src="js/mainGame/PowerUp.js"></script>
+  <script src="js/mainGame/cachorro.js"></script>
+  <script src="js/mainGame/Bullet.js"></script>
+  <script src="js/mainGame/Personagem.js"></script>
+  <script src="js/mainGame/Score.js"></script>
+  <script src="js/mainGame/JogoPrincipal.js"></script>
+
+  <script src="js/levelEditor/Storage.js"></script>
+  <script src="js/levelEditor/Editor.js"></script>
+  <script src="js/levelEditor/CreatedLevels.js"></script>
+
+  <script src="js/cariocajogo.js"></script>
+
+  <script src="js/Preloader.js"></script>
+
+  <!-- Botão para iniciar o jogo e a música -->
+  <button id="start-game-button">Iniciar música de fundo</button>
+
+  <!-- Controle de volume -->
+  <div id="volume-control" style="display: none;">
+      <label for="volume-slider">Volume:</label>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.5">
+  </div>
+
+  <!-- Elemento de áudio -->
+  <audio id="background-music" loop>
+      <source src="sounds/game-music-loop-7-145285.mp3" type="audio/mpeg">
+      Seu navegador não suporta o elemento de áudio.
+  </audio>
+
+  <script>
+      document.addEventListener('DOMContentLoaded', (event) => {
+          // Seleciona o botão, o controle de volume e o elemento de áudio
+          const startButton = document.getElementById('start-game-button');
+          const volumeControl = document.getElementById('volume-control');
+          const volumeSlider = document.getElementById('volume-slider');
+          const backgroundMusic = document.getElementById('background-music');
+          
+          // Adiciona um ouvinte de evento para o clique no botão
+          startButton.addEventListener('click', () => {
+              // Inicia a reprodução da música
+              backgroundMusic.play().catch(error => {
+                  console.error("Erro ao tentar reproduzir a música:", error);
+              });
+
+              // Esconde o botão após o clique e exibe o controle de volume
+              startButton.style.display = 'none';
+              volumeControl.style.display = 'block';
+          });
+
+          // Adiciona um ouvinte de evento para o controle deslizante de volume
+          volumeSlider.addEventListener('input', (event) => {
+              // Ajusta o volume da música
+              backgroundMusic.volume = event.target.value;
+          });
+
+          // Define o volume inicial da música
+          backgroundMusic.volume = volumeSlider.value;
+      });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+
+/* Estilização geral */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+button {
+    
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+   
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Controle de volume */
+#volume-control {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#volume-control label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#volume-slider {
+    width: 150px;
+}
+
+.hidden {
+    display: none;
+}
